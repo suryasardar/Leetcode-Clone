@@ -36,7 +36,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = () => {
               <td className="px-4 py-4">
                 <Link
                   className="hover:text-gray-600 cursor-pointer"
-                  href={`/problem/${doc.id}`}
+                  href={`/Problem/${doc.id}`}
                 >
                   {doc.title}
                 </Link>
