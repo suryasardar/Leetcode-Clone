@@ -6,12 +6,14 @@ import { FaChevronUp } from "react-icons/fa6";
 import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { javascript } from "@codemirror/lang-javascript";
+import EditorFooter from "./EditorFooter";
 type PlaygroundProps = {};
 
 const Playground: React.FC<PlaygroundProps> = () => {
   return (
-    <div className="flex flex-col bg-dark-layer-1 relative">
+    <div className="flex flex-col bg-dark-layer-1 relative overflow-x-hidden">
       <PreferenceNav />
+
       <Split
         className="h-[calc(100vh-94px)]"
         direction="vertical"
@@ -26,39 +28,52 @@ const Playground: React.FC<PlaygroundProps> = () => {
             style={{ fontSize: 16 }}
           />
         </div>
-        <div className="text-white px-5 py-2 text-sm font-medium leading  ">
-          TestCases
-          <hr className="bg-white w-16 px-3 my-1 h-0.5" />
-          <div className="flex items-center space-x-2 ">
-            <button className=" bg-dark-fill-2 rounded-lg my-1 text-lg px-3 font-medium hover:bg-dark-fill-3 ">
-              Case 1
-            </button>
-            <button className=" bg-dark-fill-2 rounded-lg my-1 text-lg px-3 font-medium hover:bg-dark-fill-3">
-              Case 2
-            </button>
-            <button className=" bg-dark-fill-2 rounded-lg my-1 text-lg px-3 font-medium hover:bg-dark-fill-3">
-              Case 3
-            </button>
-          </div>
+        <div className="w-full px-5 overflow-auto">
+          {/* testcase heading */}
+          <div className="flex h-10 items-center space-x-6">
+            <div className="relative flex h-full flex-col justify-center cursor-pointer">
+              <div className="text-sm font-medium leading-5 text-white">
+                Testcases
               </div>
-              
-      </Split>
-      <div className="text-white px-4 py-2 flex items-center justify-between">
-        <button className=" bg-dark-fill-2 flex items-center gap-2 py-2 px-4 rounded-lg text-sm hover:bg-dark-fill-3 ">
-          Console{" "}
-          <span>
-            <FaChevronUp />
-          </span>
-        </button>
-        <div className=" space-x-2 text-sm ">
-          <button className=" bg-dark-fill-2 hover:bg-dark-fill-3 rounded-lg p-1.5">
-            Run
-          </button>
-          <button className=" bg-dark-green-s hover:bg-dark-fill-3 rounded-lg p-1.5">
-            Submit
-          </button>
+              <hr className="absolute bottom-0 h-0.5 w-full rounded-full border-none bg-white" />
+            </div>
+          </div>
+
+          <div className="flex text-white">
+            <div className="mr-2 items-start mt-2 ">
+              <div className="flex flex-wrap items-center gap-y-4">
+                <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
+                  Case 1
+                </div>
+              </div>
+                      </div>
+                      {/* 2 */}
+                      <div className="mr-2 items-start mt-2 ">
+              <div className="flex flex-wrap items-center gap-y-4">
+                <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
+                  Case 2
+                </div>
+              </div>
+                      </div>
+                      {/* 3 */}
+                      <div className="mr-2 items-start mt-2 ">
+              <div className="flex flex-wrap items-center gap-y-4">
+                <div className="font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap">
+                  Case 1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="font-semibold my-4">
+            <p className="text-sm font-medium mt-4 text-white">Input:</p>
+            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2">nums = [2,7,11,15], target = 9</div>
+            <p className="text-sm font-medium mt-4 text-white">Output:</p>
+            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2">[0,1]</div>
+          </div>
         </div>
-      </div>
+      </Split>
+      <EditorFooter />
     </div>
   );
 };
